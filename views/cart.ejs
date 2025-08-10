@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cart | ShopX</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900 font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-lg px-6 py-4 sticky top-0 z-50">
+    <div class="flex justify-between items-center max-w-6xl mx-auto">
+      <a href="/home" class="text-2xl font-extrabold text-red-500">ShopX</a>
+      <ul class="flex space-x-6 text-lg items-center">
+  <li><a href="/home" class="hover:text-red-500">Home</a></li>
+  <li><a href="/men" class="hover:text-red-500">Men</a></li>
+  <li><a href="/women" class="hover:text-red-500">Women</a></li>
+  <li><a href="/cart" class="hover:text-red-500 font-semibold">🛒 Cart</a></li>
+  
+  <!-- Moved and styled Customer Support -->
+  <li>
+    <a href="/chat" class="bg-red-500 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition">
+      Customer Support ChatBot
+    </a>
+  </li>
+</ul>
+
+    </div>
+  </nav>
+
+  <!-- Main Cart Section -->
+  <main class="max-w-7xl mx-auto mt-10 px-4 grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+    <!-- Cart Items -->
+    <section class="lg:col-span-2 bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+      <h2 class="text-2xl font-bold mb-6 border-b pb-3">Your Cart</h2>
+
+      <!-- All Cart Lists -->
+      <% [cart, cartlatest, cartmen, cartwomen].forEach(cartList => { %>
+        <% cartList.forEach(item => { %>
+          <div class="flex flex-col sm:flex-row items-center sm:items-stretch justify-between bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition mb-4">
+            
+            <!-- Product Info -->
+            <div class="flex items-center w-full sm:w-auto p-4">
+              <img src="/images/uploads/<%= item.image %>" alt="<%= item.name %>" 
+                   class="w-24 h-24 object-cover rounded-md shadow-sm border border-gray-200">
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold"><%= item.name %></h3>
+                <p class="text-pink-600 font-bold">$<%= item.price %></p>
+              </div>
+            </div>
+
+            <!-- Remove -->
+            <div class="flex items-center p-4 border-t sm:border-t-0 sm:border-l border-gray-200 bg-white">
+              <a href="/delete/<%= item.id %>" 
+                 class="text-red-500 hover:text-red-700 flex items-center gap-1 font-medium">
+                <span class="material-icons">delete</span> Remove
+              </a>
+            </div>
+          </div>
+        <% }) %>
+      <% }) %>
+    </section>
+
+    <!-- Order Summary -->
+    <aside class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 sticky top-20 h-fit">
+      <h2 class="text-2xl font-bold mb-6 border-b pb-3">Order Summary</h2>
+
+      <div class="space-y-4">
+        <div class="flex justify-between text-lg font-medium">
+          <span>Total MRP</span>
+          <span class="text-gray-800 font-bold">$<%= bill.toFixed(2) %></span>
+        </div>
+        
+        <div class="flex justify-between text-gray-600">
+          <span>Shipping Fee</span>
+          <span class="text-green-600 font-semibold">FREE</span>
+        </div>
+        <div class="border-t border-gray-300 my-5"></div>
+
+        <div class="flex justify-between text-xl font-extrabold">
+          <span>Total Amount</span>
+          <span class="text-green-600">$<%= bill %></span>
+        </div>
+      </div>
+
+      <!-- Checkout -->
+      <a href="/checkout" 
+         class="mt-6 w-full inline-block text-center bg-red-500 hover:bg-red-600 text-white font-semibold py-3 rounded-lg shadow-md transition">
+         Proceed to Checkout
+      </a>
+
+      <!-- Continue Shopping -->
+     
+    </aside>
+  </main>
+
+  <!-- Google Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</body>
+</html>

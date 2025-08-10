@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-900">
+  <ul class="flex space-x-6 text-lg items-center">
+
+  
+  <!-- Moved and styled Customer Support -->
+  <li>
+    <a href="/chat" class="bg-red-500 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition">
+      Customer Support ChatBot
+    </a>
+  </li>
+</ul>
+
+
+  <div class="max-w-xl mx-auto p-6">
+    <h2 class="text-2xl font-semibold mb-6">Contact</h2>
+
+    <form id="payment-form" action="/users/checkout" method="post" class="space-y-6">
+
+      <div class="mb-6 flex justify-between items-center">
+        <input type="email" placeholder="Email" name="email" required
+          class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <a href="/login" class="text-blue-600 hover:underline ml-4 whitespace-nowrap">Log in</a>
+      </div>
+
+      <div class="mb-6 flex items-center">
+        <input type="checkbox" id="news" checked class="mr-2 text-blue-600" />
+        <label for="news" class="text-gray-700">Email me with news and offers</label>
+      </div>
+
+      <h2 class="text-2xl font-semibold mb-6">Delivery</h2>
+
+      
+      <select name="country" class="w-full border border-gray-300 rounded-md px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        <option>AMERICA</option>
+      </select>
+
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <input type="text" placeholder="First name" name="firstname" required
+          class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <input type="text" placeholder="Last name" name="lastname" required
+          class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <input type="text" placeholder="Address" name="address" required
+        class="w-full border border-gray-300 rounded-md px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <input type="text" placeholder="City" name="city" required
+          class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <!-- Stripe Card Element -->
+      
+      <button id="submit" type="submit"
+        class="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 rounded-lg shadow-md transition mt-6">
+        Place Order
+      </button>
+
+    
+    </form>
+  </div>
+
+  
+</body>
+</html>

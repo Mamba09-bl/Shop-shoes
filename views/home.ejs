@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopX | Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md px-6 py-4">
+    <div class="flex justify-between items-center max-w-6xl mx-auto">
+      <a href="/home" class="text-2xl font-bold text-red-500">ShopX</a>
+      <ul class="flex space-x-6 text-lg items-center">
+  <li><a href="/home" class="hover:text-red-500">Home</a></li>
+  <li><a href="/men" class="hover:text-red-500">Men</a></li>
+  <li><a href="/women" class="hover:text-red-500">Women</a></li>
+  <li><a href="/cart" class="hover:text-red-500 font-semibold">🛒 Cart</a></li>
+  
+  <!-- Moved and styled Customer Support -->
+  <li>
+    <a href="/chat" class="bg-red-500 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition">
+      Customer Support ChatBot
+    </a>
+  </li>
+</ul>
+
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto mt-10 px-4">
+
+    <!-- Banner -->
+    <div class="relative w-full h-99 md:h-96 rounded-lg overflow-hidden mb-12">
+      <img src="\images\uploads\fcbc4e546676fa4f8e7ba754.jpg" alt="Banner" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-20 flex flex-col justify-center items-center text-white text-center px-4">
+        <h1 class="text-3xl md:text-5xl font-bold">Welcome to ShopX</h1>
+        <p class="mt-2 text-lg md:text-xl">Find your perfect pair of shoes</p>
+      </div>
+    </div>
+
+    <!-- Popular Products -->
+    <h2 class="text-3xl font-bold mb-6">🔥 Popular Products</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <% home.forEach((product) => { %>
+        <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition duration-300">
+          <img src="/images/uploads/<%= product.image %>" alt="<%= product.name %>" class="w-full h-80 object-cover rounded mb-3">
+          <h3 class="text-xl font-semibold mb-1"><%= product.name %></h3>
+          <p class="text-gray-600 mb-2 text-xl font-semibold mb-1"><strong>Price</strong>:$<%= product.price %></p>
+          <div class="flex flex-col gap-2">
+           <a href="/addtocart/<%= product.id %>" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded w-full">Add to cart</a>
+            <a href="/views/<%= product.id %>" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded text-center w-full">View: <%= product.name %></a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+
+
+    <!-- Latest Products -->
+    <h2 class="text-3xl font-bold mb-6">🆕 Latest Products</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <% latest.forEach((product) => { %>
+        <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition duration-300">
+          <img src="/images/uploads/<%= product.image %>" alt="<%= product.name %>" class="w-full h-80 object-cover rounded mb-3">
+          <h3 class="text-xl font-semibold mb-1"> <%= product.name %></h3>
+          <p class="text-gray-600 mb-2 text-xl font-semibold mb-1"><strong>Price</strong>:$<%= product.price %></p>
+          <div class="flex flex-col gap-2">
+            <a href="/addtocart/<%= product.id %>" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded w-full">Add to cart</a>
+            <a href="/views/<%= product.id %>" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded text-center w-full">View: <%= product.name %></a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+
+  </main>
+
+</body>
+</html>
+

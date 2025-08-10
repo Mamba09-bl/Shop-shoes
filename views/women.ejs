@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Women Section</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .fade-slide.active {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md px-6 py-4">
+    <div class="flex justify-between items-center max-w-6xl mx-auto">
+      <a href="/home" class="text-2xl font-bold text-red-500">ShopX</a>
+      <ul class="flex space-x-6 text-lg items-center">
+  <li><a href="/home" class="hover:text-red-500">Home</a></li>
+  <li><a href="/men" class="hover:text-red-500">Men</a></li>
+  <li><a href="/women" class="hover:text-red-500">Women</a></li>
+  <li><a href="/cart" class="hover:text-red-500 font-semibold">🛒 Cart</a></li>
+  
+  <!-- Moved and styled Customer Support -->
+  <li>
+    <a href="/chat" class="bg-red-500 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition">
+      Customer Support ChatBot
+    </a>
+  </li>
+</ul>
+
+    </div>
+  </nav>
+
+  <!-- Banner -->
+  <div class="relative w-full bg-black text-white py-10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-6">
+
+      <!-- Left Side: Image -->
+      <div class="md:w-1/2 flex justify-center">
+        <img src="/images/uploads/alonso-reyes-WIwd5CyxyPc-unsplash.jpg" alt="Women Shoes" class="max-w-sm">
+      </div>
+
+      <!-- Right Side: Text -->
+      <div class="md:w-1/2 mt-6 md:mt-0 md:pl-10">
+        <h1 class="text-5xl font-extrabold tracking-wide leading-tight">
+          WOMEN <br> SHOES
+        </h1>
+        <h2 class="mt-4 text-xl font-bold">SHOES 01</h2>
+        <p class="mt-2 text-gray-300">
+          Step into elegance and comfort with our latest women's sneakers —
+          crafted with premium materials, designed for all-day wear, and styled to match any outfit.
+          From casual strolls to active days, these shoes are your perfect companion.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Women Products -->
+  <!-- Women Products -->
+<div class="max-w-6xl mx-auto px-4 py-8">
+  <h2 class="text-3xl font-bold mb-6">Women’s Collection</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <% women.forEach((product) => { %>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+        <img 
+          src="/images/uploads/<%= product.image %>" 
+          alt="<%= product.name %>" 
+          class="w-full h-60 object-cover object-center hover:scale-105 transition-transform duration-300"
+        >
+        <div class="p-4">
+          <h3 class="text-lg font-semibold mb-2"><%= product.name %></h3>
+           <p class="text-blue-600 mb-2 text-xl font-semibold mb-1"><strong>Price</strong>:$<%= product.price %></p>
+          <a 
+            href="/addedtocart/<%= product._id %>" 
+            class="block text-center bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-md transition-colors"
+          >
+            Add to Cart
+          </a>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+  <script>
+    let fadeIndex = 0;
+    const fadeSlides = document.querySelectorAll('.fade-slide');
+
+    function showNextFadeSlide() {
+      fadeSlides[fadeIndex].classList.remove('active');
+      fadeIndex = (fadeIndex + 1) % fadeSlides.length;
+      fadeSlides[fadeIndex].classList.add('active');
+    }
+
+    setInterval(showNextFadeSlide, 3000); // Change every 3 seconds
+  </script>
+
+</body>
+</html>
