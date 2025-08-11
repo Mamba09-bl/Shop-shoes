@@ -1,6 +1,7 @@
 const mongoose  = require("mongoose")
-mongoose.connect("mongodb+srv://hamzarival:bloodyjava@cluster0.k8hovee.mongodb.net/NEOSTORE?retryWrites=true&w=majority")
-
+mongoose.connect(
+  "mongodb+srv://hamzaahmed:hamza123@cluster0.k8hovee.mongodb.net/NEOSTORE?retryWrites=true&w=majority&appName=Cluster0"
+);
 const userSchema = mongoose.Schema({
     fullname : String,
     email:String,
