@@ -1,5 +1,5 @@
 const mongoose  = require("mongoose")
-mongoose.connect("mongodb://127.0.0.1:27017/NEOSTORE")
+mongoose.connect("mongodb+srv://hamzarival:bloodyjava@cluster0.k8hovee.mongodb.net/NEOSTORE?retryWrites=true&w=majority")
 
 const userSchema = mongoose.Schema({
     fullname : String,
