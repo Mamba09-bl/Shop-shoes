@@ -15,10 +15,7 @@ app.set("view engine","ejs")
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 // require("dotenv").config();
-app.use(express.static('public', {
-  maxAge: '1y',
-  etag: false
-}));
+app.use(express.static("public"));
 
 app.use("/",index)
 app.use("/users",userRouter)
